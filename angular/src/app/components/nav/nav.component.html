@@ -1,0 +1,39 @@
+<!-- Navbar -->
+<nav class="px-4 navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">
+    <img src="/assets/brandmark_name.png" height="40" width="160" class="d-inline-block align-top" alt="">
+  </a>
+
+  <form class="navbar-form navbar-left form-inline mx-1" onsubmit="event.preventDefault();" style="padding-left:0px;padding-right:0px;">
+	<div class="form-inline">
+	  <div class="input-group">
+	    <div class="input-group-prepend">
+	      <span class="input-group-text">IP</span>
+        </div>
+        <input type="text" class="form-control" id="ip-field" placeholder="ROS IP" value="10.10.10.10" style="width:140px;">
+      </div>
+	</div>
+    <button type="submit" class="btn btn-dark mx-2" id="connect-btn" onclick="connect();">Connect</button>
+  </form>
+
+  <span id="notif-bar" class="mx-2">
+    <fa name="signal" size="lg" class="mx-2"></fa>
+    <fa name="battery" size="lg" class="mx-2"></fa>
+    <fa name="globe" size="lg" class="mx-2"></fa>
+  </span>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav nav navbar-right ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/']">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/settings']">Settings</a>
+      </li>
+    </ul>
+  </div>
+</nav>

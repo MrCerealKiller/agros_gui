@@ -1,0 +1,73 @@
+<div id="status-panel" class="row card-group w-auto mx-2 p-3">
+
+  <!-- Status -->
+  <div id="status" class="col card border-dark px-0 mx-0">
+	<div class="card-header">
+	  <p class="card-title title">System</p>
+	</div>
+	<div class="card-body">
+	  <table class="table">
+	    <tbody>
+	      <tr>
+	      	<th scope="row">Speed:</th><td>{{sys_speed | number:'1.4-4'}} Km/h</td>
+	      </tr>
+	      <tr>
+	      	<th scope="row">Heading:</th><td>{{sys_heading | number:'1.1-1'}}&deg;</td>
+	      </tr>
+	      <tr>
+	      	<th scope="row">Coordinates:</th><td>{{sys_lat | number:'1.3-3'}}, {{sys_lon | number:'1.3-3'}}</td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>
+  </div>
+
+  <!-- Controls -->
+  <div id="controls" class="card text-center border-dark px-0 mx-0">
+    <div class="card-header">
+	  <p class="card-title title">Controls</p>
+    </div>
+    <div class="card-body">
+      <button type="button" class="btn btn-danger btn-block m-2">Soft Stop</button>
+  
+      <div class="btn-group btn-group-toggle m-2" data-toggle="buttons">
+	    <label class="btn btn-dark">
+	      <input type="radio" name="options" id="option1" autocomplete="off">Idle
+	    </label>
+	    <label class="btn btn-dark">
+	      <input type="radio" name="options" id="option2" autocomplete="off">Auto
+	    </label>
+	    <label class="btn btn-dark">
+	      <input type="radio" name="options" id="option3" autocomplete="off">Home
+	    </label>
+      </div>
+
+      <br>
+      <button type="button" class="btn btn-outline-dark m-2">Set Home</button>
+      <button type="button" class="btn btn-outline-dark m-2">Cache Tiles</button>
+    </div>
+  </div>
+
+  <!-- Target -->
+  <div id="target" class="col card border-dark px-0 mr-0 mx-0">
+	<div class="card-header">
+	  <p class="card-title title">Target</p>
+	</div>
+	<div class="card-body">
+	  <table class="table">
+	    <tbody>
+	      <tr>
+	      	<th scope="row">Distance:</th><td>{{tar_distance | number:'1.4-4'}} Km</td>
+	      </tr>
+	      <tr>
+	      	<th scope="row">Heading:</th><td>{{tar_heading | number:'1.1-1'}}&deg;</td>
+	      </tr>
+	      <tr>
+	      	<th scope="row">Coordinates:</th><td>{{tar_lat | number:'1.3-3'}}, {{tar_lon | number:'1.3-3'}}</td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>
+  </div>
+
+</div>

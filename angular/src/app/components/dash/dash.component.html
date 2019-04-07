@@ -1,0 +1,22 @@
+<app-map></app-map>
+
+<div id="bottom-panes">
+  <ul class="nav nav-pills nav-fill mx-4 mt-3">
+    <li class="nav-item" rel="status-tab" (click)="viewMode ='status-tab'">
+	  <a class="nav-link text-dark" [class.active]="viewMode == 'status-tab'" href="#">System</a>
+	</li>
+	<li class="nav-item" rel="waypoints-tab" (click)="viewMode ='waypoints-tab'">
+	  <a class="nav-link text-dark" [class.active]="viewMode == 'waypoints-tab'" href="#">Waypoints</a>
+	</li>
+  </ul>
+
+  <div [ngSwitch]="viewMode">
+  	<div id="status-tab" *ngSwitchCase="'status-tab'">
+	  <app-status></app-status>
+	</div>
+
+	<div id="waypoints-tab" *ngSwitchCase="'waypoints-tab'">
+	  <app-waypoints></app-waypoints>
+	</div>
+  </div>
+</div>

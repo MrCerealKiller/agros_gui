@@ -1,0 +1,44 @@
+<div class="container my-5">
+  <p><i>
+    Please note that these settings are for the the way the GUI interacts with
+    the system. Any important changes should be made on the robot itself to
+    avoid a point of failure.
+    <br><br>
+    If changes need to be made on the fly, consider SSH-ing into the system.
+    If needed you can issue an idle or a soft-stop command from the GUI.
+  </i></p>
+</div>
+
+<hr>
+
+<div class="container">
+  <h2 class="my-4">System Settings</h2>
+  <form>
+    <div class="form-group my-3">
+      <label for="bridgeIp">Default ROS Bridge IP</label>
+      <input type="text" class="form-control" id="bridgeIp" aria-describedby="ipHelp" placeholder="Enter IP">
+      <small id="ipHelp" class="form-text text-muted">The default IP address to the robot's rosbridge server</small>
+    </div>
+    <div class="form-group my-3">
+      <label for="bridgeIp">Default Coordinates</label>
+      <div class="form-group row">
+        <div class="col">
+          <input type="number" class="form-control" placeholder="Lattitude">
+        </div>
+        <div class="col">
+          <input type="number" class="form-control" placeholder="Longitude">
+        </div>
+      </div>
+      <small id="ipHelp" class="form-text text-muted">When there is no GPS lock, where should the GUI center itself</small>
+    </div>
+    <button type="submit" class="btn btn-primary my-3">Submit Changes</button>
+  </form>
+</div>
+
+<hr>
+
+<div class="container">
+  <h2 class="my-4">Cache settings</h2>
+  <p><b>Tiles in cache: </b>[nbTiles] (size ~[size]Mb)</p>
+  <button type="button" class="btn btn-primary my-3">Clear Cache</button>
+</div>
