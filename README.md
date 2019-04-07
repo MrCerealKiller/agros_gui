@@ -1,4 +1,4 @@
-#AgROS Frontend
+# AgROS Frontend
 
 ## Description
 This is a web-based frontend for interacting with the AgROS system. AgROS
@@ -9,6 +9,8 @@ The frontend allows you to view the basic status of the system and the next
 waypoint. You can issue basic controls as well as a soft stop. You can load
 a set of waypoints or draw a region to automatically create one. Everything
 is visualized in a map on the dashboard.
+
+![Alt text](/angular/src/assets/AgROS_screenshot.png?raw=true "Demo Screenshot")
 
 ## System
 The system is built on Angular. To view the dependencies of the project,
