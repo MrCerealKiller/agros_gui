@@ -1,4 +1,4 @@
-# AgROS Frontend ![GitHub release](https://img.shields.io/github/release/MrCerealKiller/agros-gui.svg)  [200~![GitHub](https://img.shields.io/github/license/MrCerealKiller/agros-gui.svg)
+# AgROS Frontend ![GitHub release](https://img.shields.io/github/release/MrCerealKiller/agros-gui.svg)  ![GitHub](https://img.shields.io/github/license/MrCerealKiller/agros-gui.svg)
 
 ## Description
 This is a web-based frontend for interacting with the AgROS system. AgROS
