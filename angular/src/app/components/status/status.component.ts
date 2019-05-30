@@ -56,66 +56,66 @@ export class StatusComponent implements OnInit {
       this.sysSpeed = message.data;
     }.bind(this));
 
-    // // System Heading ----------------------------------------------------------
-    // this.sysHeadingSub = new ROSLIB.Topic({
-    //   ros: this._ros.getRos(),
-    //   name: '/state/yaw',
-    //   messageType: 'std_msgs/Float64'
-    // });
-    // this.sysHeadingSub.subscribe(function(message) {
-    //   this.sysHeading = message.data;
-    // }.bind(this));
-    //
-    // // System Coordinates ------------------------------------------------------
-    // this.sysCoordsSub = new ROSLIB.Topic({
-    //   ros: this._ros.getRos(),
-    //   name: '/gps/raw',
-    //   messageType: 'sensor_msgs/NavSatFix'
-    // });
-    // this.sysCoordsSub.subscribe(function(message) {
-    //   this.sysLat = message.latitude;
-    //   this.sysLon = message.longitude;
-    // }.bind(this));
-    //
-    // // Target Distance ---------------------------------------------------------
-    // this.tarDistanceSub = new ROSLIB.Topic({
-    //   ros: this._ros.getRos(),
-    //   name: '/path/targetDist',
-    //   messageType: 'std_msgs/Float64'
-    // });
-    // this.tarDistanceSub.subscribe(function(message) {
-    //   this.tarDistance = message.data;
-    // }.bind(this));
-    //
-    // // Target Heading ----------------------------------------------------------
-    // this.tarHeadingSub = new ROSLIB.Topic({
-    //   ros: this._ros.getRos(),
-    //   name: '/path/targetAngle',
-    //   messageType: 'std_msgs/Float64'
-    // });
-    // this.tarHeadingSub.subscribe(function(message) {
-    //   this.tarHeading = message.data;
-    // }.bind(this));
-    //
-    // // Target Latitude ---------------------------------------------------------
-    // this.tarLatSub = new ROSLIB.Topic({
-    //   ros: this._ros.getRos(),
-    //   name: '/path/targetLat',
-    //   messageType: 'std_msgs/Float64'
-    // });
-    // this.tarLatSub.subscribe(function(message) {
-    //   this.tarLat = message.data;
-    // }.bind(this));
-    //
-    // // Target Longitude --------------------------------------------------------
-    // this.tarLatSub = new ROSLIB.Topic({
-    //   ros: this._ros.getRos(),
-    //   name: '/path/targetLat',
-    //   messageType: 'std_msgs/Float64'
-    // });
-    // this.tarLonSub.subscribe(function(message) {
-    //   this.tarLon = message.data;
-    // }.bind(this));
+    // System Heading ----------------------------------------------------------
+    this.sysHeadingSub = new ROSLIB.Topic({
+      ros: this._ros.getRos(),
+      name: '/state/yaw',
+      messageType: 'std_msgs/Float64'
+    });
+    this.sysHeadingSub.subscribe(function(message) {
+      this.sysHeading = message.data;
+    }.bind(this));
+
+    // System Coordinates ------------------------------------------------------
+    this.sysCoordsSub = new ROSLIB.Topic({
+      ros: this._ros.getRos(),
+      name: '/gps/raw',
+      messageType: 'sensor_msgs/NavSatFix'
+    });
+    this.sysCoordsSub.subscribe(function(message) {
+      this.sysLat = message.latitude;
+      this.sysLon = message.longitude;
+    }.bind(this));
+
+    // Target Distance ---------------------------------------------------------
+    this.tarDistanceSub = new ROSLIB.Topic({
+      ros: this._ros.getRos(),
+      name: '/path/targetDist',
+      messageType: 'std_msgs/Float64'
+    });
+    this.tarDistanceSub.subscribe(function(message) {
+      this.tarDistance = message.data;
+    }.bind(this));
+
+    // Target Heading ----------------------------------------------------------
+    this.tarHeadingSub = new ROSLIB.Topic({
+      ros: this._ros.getRos(),
+      name: '/path/targetAngle',
+      messageType: 'std_msgs/Float64'
+    });
+    this.tarHeadingSub.subscribe(function(message) {
+      this.tarHeading = message.data;
+    }.bind(this));
+
+    // Target Latitude ---------------------------------------------------------
+    this.tarLatSub = new ROSLIB.Topic({
+      ros: this._ros.getRos(),
+      name: '/path/targetLat',
+      messageType: 'std_msgs/Float64'
+    });
+    this.tarLatSub.subscribe(function(message) {
+      this.tarLat = message.data;
+    }.bind(this));
+
+    // Target Longitude --------------------------------------------------------
+    this.tarLonSub = new ROSLIB.Topic({
+      ros: this._ros.getRos(),
+      name: '/path/targetLon',
+      messageType: 'std_msgs/Float64'
+    });
+    this.tarLonSub.subscribe(function(message) {
+      this.tarLon = message.data;
+    }.bind(this));
   }
 
   detach() {
