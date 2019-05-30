@@ -11,6 +11,8 @@ import { StatusComponent } from './components/status/status.component';
 import { WaypointsComponent } from './components/waypoints/waypoints.component';
 import { SettingsComponent } from './components/settings/settings.component';
 
+import { RosService } from './services/ros.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,9 @@ import { SettingsComponent } from './components/settings/settings.component';
     AngularFontAwesomeModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    RosService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
