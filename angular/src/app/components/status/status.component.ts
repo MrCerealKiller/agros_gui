@@ -52,7 +52,6 @@ export class StatusComponent implements OnInit {
       messageType: 'std_msgs/Float64'
     });
     this.sysSpeedSub.subscribe(function(message) {
-      console.log('BOOP');
       this.sysSpeed = message.data;
     }.bind(this));
 

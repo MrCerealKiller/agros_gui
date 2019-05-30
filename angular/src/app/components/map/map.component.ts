@@ -41,7 +41,7 @@ export class MapComponent implements OnInit {
     this.tractorFeature.setStyle(new Style({
       image: new OlIcon({
         src: 'assets/tractor_marker.png',
-        scale: '0.2'
+        scale: '0.25'
       })
     }));
 
