@@ -15,12 +15,29 @@ import {Circle, Fill, Stroke, Style} from 'ol/style';
 
 import { fromLonLat } from 'ol/proj';
 
+// ROS Imports
+import { Subscription } from 'rxjs';
+import * as ROSLIB from 'roslib';
+
+import { RosService } from 'src/app/services/ros.service';
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
+
+  // Tractor Marker Status
+  lat: number = 45.073313;
+  lon: number = -74.935338;
+  heading: number = 0;
+
+  // ROS
+  connection: Subscription;
+  coordsSub: ROSLIB.Topic;
+  headingSub: ROSLIB.Topic;
+
   // Base Map
   map: OlMap;
   view: OlView;
@@ -30,7 +47,8 @@ export class MapComponent implements OnInit {
 
   tractorFeature: OlFeature;
 
-  constructor() {
+  constructor(private _ros: RosService) {
+    // Initialize Map Components
     this.mapLayer = new OlTileLayer({
       source: new OlXYZ({
         url: 'http://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}'
@@ -45,15 +63,17 @@ export class MapComponent implements OnInit {
       })
     }));
 
-    //TODO: REMOVE (FOR DEBUG ONLY)
-    var initPoint = new OlPoint(fromLonLat([-74.935338, 45.073313]));
-    this.tractorFeature.setGeometry(initPoint);
-    //END
-
     this.features = new OlVectorLayer({
       source: new OlVectorSource({
         features: [this.tractorFeature]
       })
+    });
+
+    // Initialize ROS
+    this.connection = this._ros.connection$.subscribe(data => {
+      if (data) {
+        this.listen();
+      }
     });
   }
 
@@ -68,5 +88,45 @@ export class MapComponent implements OnInit {
       layers: [this.mapLayer, this.features],
       view: this.view
     });
+  }
+
+  listen() {
+    // System Coordinates ------------------------------------------------------
+    this.coordsSub = new ROSLIB.Topic({
+      ros: this._ros.getRos(),
+      name: '/gps/raw',
+      messageType: 'sensor_msgs/NavSatFix'
+    });
+    this.coordsSub.subscribe(function(message) {
+      this.lat = message.latitude;
+      this.lon = message.longitude;
+      this.updateMarker();
+    }.bind(this));
+
+    // System Heading ----------------------------------------------------------
+    this.headingSub = new ROSLIB.Topic({
+      ros: this._ros.getRos(),
+      name: '/state/yaw',
+      messageType: 'std_msgs/Float64'
+    });
+    this.headingSub.subscribe(function(message) {
+      this.heading = (message.data / 180.0) * 3.14159265359;
+      this.updateMarker();
+    }.bind(this));
+  }
+
+  detach() {
+    // TODO unsubscribe from ROS topic
+  }
+
+  updateMarker() {
+    var loc = fromLonLat([this.lon, this.lat]);
+    var point = new OlPoint(loc);
+    this.tractorFeature.getStyle().getImage().setRotation(this.heading);
+    this.tractorFeature.setGeometry(point);
+  }
+
+  ngOnDestroy() {
+    this.connection.unsubscribe();
   }
 }
