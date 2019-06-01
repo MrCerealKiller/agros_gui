@@ -14,6 +14,7 @@ import OlIcon from 'ol/style/Icon';
 import {Circle, Fill, Stroke, Style} from 'ol/style';
 
 import { fromLonLat } from 'ol/proj';
+import { containsCoordinate } from 'ol/extent';
 
 // ROS Imports
 import { Subscription } from 'rxjs';
@@ -69,6 +70,11 @@ export class MapComponent implements OnInit {
       })
     });
 
+    this.view = new OlView({
+      center: fromLonLat([this.lon, this.lat]),
+      zoom: 15
+    });
+
     // Initialize ROS
     this.connection = this._ros.connection$.subscribe(data => {
       if (data) {
@@ -78,11 +84,6 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.view = new OlView({
-      center: fromLonLat([-74.935338, 45.073313]),
-      zoom: 15
-    });
-
     this.map = new OlMap({
       target: 'map',
       layers: [this.mapLayer, this.features],
@@ -124,6 +125,11 @@ export class MapComponent implements OnInit {
     var point = new OlPoint(loc);
     this.tractorFeature.getStyle().getImage().setRotation(this.heading);
     this.tractorFeature.setGeometry(point);
+
+    var extent = this.map.getView().calculateExtent(this.map.getSize());
+    if (!containsCoordinate(extent, loc)) {
+      this.map.getView().animate({center: loc});
+    }
   }
 
   ngOnDestroy() {
