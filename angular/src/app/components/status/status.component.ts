@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import * as ROSLIB from 'roslib';
 
+import { environment } from 'src/environments/environment'
 import { RosService } from 'src/app/services/ros.service';
 
 @Component({
@@ -48,7 +49,7 @@ export class StatusComponent implements OnInit {
     // System Speed ------------------------------------------------------------
     this.sysSpeedSub = new ROSLIB.Topic({
       ros: this._ros.getRos(),
-      name: '/state/speed',
+      name: environment.sysSpeedTopic,
       messageType: 'std_msgs/Float64'
     });
     this.sysSpeedSub.subscribe(function(message) {
@@ -58,7 +59,7 @@ export class StatusComponent implements OnInit {
     // System Heading ----------------------------------------------------------
     this.sysHeadingSub = new ROSLIB.Topic({
       ros: this._ros.getRos(),
-      name: '/state/yaw',
+      name: environment.sysHeadingTopic,
       messageType: 'std_msgs/Float64'
     });
     this.sysHeadingSub.subscribe(function(message) {
@@ -68,7 +69,7 @@ export class StatusComponent implements OnInit {
     // System Coordinates ------------------------------------------------------
     this.sysCoordsSub = new ROSLIB.Topic({
       ros: this._ros.getRos(),
-      name: '/gps/raw',
+      name: environment.sysCoordsTopic,
       messageType: 'sensor_msgs/NavSatFix'
     });
     this.sysCoordsSub.subscribe(function(message) {
@@ -79,7 +80,7 @@ export class StatusComponent implements OnInit {
     // Target Distance ---------------------------------------------------------
     this.tarDistanceSub = new ROSLIB.Topic({
       ros: this._ros.getRos(),
-      name: '/path/targetDist',
+      name: environment.tarDistanceTopic,
       messageType: 'std_msgs/Float64'
     });
     this.tarDistanceSub.subscribe(function(message) {
@@ -89,7 +90,7 @@ export class StatusComponent implements OnInit {
     // Target Heading ----------------------------------------------------------
     this.tarHeadingSub = new ROSLIB.Topic({
       ros: this._ros.getRos(),
-      name: '/path/targetAngle',
+      name: environment.tarHeadingTopic,
       messageType: 'std_msgs/Float64'
     });
     this.tarHeadingSub.subscribe(function(message) {
@@ -99,7 +100,7 @@ export class StatusComponent implements OnInit {
     // Target Latitude ---------------------------------------------------------
     this.tarLatSub = new ROSLIB.Topic({
       ros: this._ros.getRos(),
-      name: '/path/targetLat',
+      name: environment.tarLatTopic,
       messageType: 'std_msgs/Float64'
     });
     this.tarLatSub.subscribe(function(message) {
@@ -109,7 +110,7 @@ export class StatusComponent implements OnInit {
     // Target Longitude --------------------------------------------------------
     this.tarLonSub = new ROSLIB.Topic({
       ros: this._ros.getRos(),
-      name: '/path/targetLon',
+      name: environment.tarLonTopic,
       messageType: 'std_msgs/Float64'
     });
     this.tarLonSub.subscribe(function(message) {

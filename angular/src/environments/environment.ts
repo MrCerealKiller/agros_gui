@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  sysSpeedTopic: '/gps/speed',
+  sysHeadingTopic: '/gps/heading',
+  sysCoordsTopic: '/gps/fix',
+  tarDistanceTopic: '/path/tarDist',
+  tarHeadingTopic: '/path/tarAngle',
+  tarLatTopic:'/path/tarLat',
+  tarLonTopic:'/path/tarLon'
 };
 
 /*

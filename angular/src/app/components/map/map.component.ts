@@ -20,6 +20,7 @@ import { containsCoordinate } from 'ol/extent';
 import { Subscription } from 'rxjs';
 import * as ROSLIB from 'roslib';
 
+import { environment } from 'src/environments/environment'
 import { RosService } from 'src/app/services/ros.service';
 
 @Component({
@@ -95,7 +96,7 @@ export class MapComponent implements OnInit {
     // System Coordinates ------------------------------------------------------
     this.coordsSub = new ROSLIB.Topic({
       ros: this._ros.getRos(),
-      name: '/gps/raw',
+      name: environment.sysCoordsTopic,
       messageType: 'sensor_msgs/NavSatFix'
     });
     this.coordsSub.subscribe(function(message) {
@@ -107,7 +108,7 @@ export class MapComponent implements OnInit {
     // System Heading ----------------------------------------------------------
     this.headingSub = new ROSLIB.Topic({
       ros: this._ros.getRos(),
-      name: '/state/yaw',
+      name: environment.sysHeadingTopic,
       messageType: 'std_msgs/Float64'
     });
     this.headingSub.subscribe(function(message) {
