@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dash.component.scss']
 })
 export class DashComponent implements OnInit {
+  viewMedia = 'map-view';
   viewMode = 'status-tab';
 
   constructor() { }

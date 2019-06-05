@@ -1,22 +1,60 @@
-<app-map></app-map>
+<div id="top-panes">
+  <div class="row mw-100 justify-content-center">
+    <div class="col-1 text-center p-0 pt-3">
+      <ul class="nav-pills list-unstyled">
+        <li class="nav-item pl-0 pr-2 my-2" rel="map-view" (click)="viewMedia ='map-view'">
+          <a class="nav-link text-dark p-1" [class.active]="viewMedia == 'map-view'" href="#">
+            <fa name="map-marker" size="lg"></fa>
+          </a>
+        </li>
+        <li class="nav-item pl-0 pr-2 my-2" rel="camera-view" (click)="viewMedia ='camera-view'">
+          <a class="nav-link text-dark p-1" [class.active]="viewMedia == 'camera-view'" href="#">
+            <fa name="camera" size="lg"></fa>
+          </a>
+        </li>
+        <li class="nav-item pl-0 pr-2 my-2" rel="depth-view" (click)="viewMedia ='depth-view'">
+          <a class="nav-link text-dark p-1" [class.active]="viewMedia == 'depth-view'" href="#">
+            <fa name="cube" size="lg"></fa>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-11">
+      <div [ngSwitch]="viewMedia">
+        <div id="map-view" class="shadow rounded" *ngSwitchCase="'map-view'">
+          <app-map></app-map>
+        </div>
+
+        <div id="camera-view" *ngSwitchCase="'camera-view'">
+          <app-camera></app-camera>
+        </div>
+
+        <div id="depth-view" *ngSwitchCase="'depth-view'">
+          <app-depth></app-depth>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div id="bottom-panes">
   <ul class="nav nav-pills nav-fill mx-4 mt-3">
     <li class="nav-item" rel="status-tab" (click)="viewMode ='status-tab'">
-	  <a class="nav-link text-dark" [class.active]="viewMode == 'status-tab'" href="#">System</a>
-	</li>
-	<li class="nav-item" rel="waypoints-tab" (click)="viewMode ='waypoints-tab'">
-	  <a class="nav-link text-dark" [class.active]="viewMode == 'waypoints-tab'" href="#">Waypoints</a>
-	</li>
+  	  <a class="nav-link text-dark" [class.active]="viewMode == 'status-tab'" href="#">System</a>
+  	</li>
+  	<li class="nav-item" rel="waypoints-tab" (click)="viewMode ='waypoints-tab'">
+  	  <a class="nav-link text-dark" [class.active]="viewMode == 'waypoints-tab'" href="#">Waypoints</a>
+  	</li>
   </ul>
 
   <div [ngSwitch]="viewMode">
   	<div id="status-tab" *ngSwitchCase="'status-tab'">
-	  <app-status></app-status>
-	</div>
+  	  <app-status></app-status>
+  	</div>
 
-	<div id="waypoints-tab" *ngSwitchCase="'waypoints-tab'">
-	  <app-waypoints></app-waypoints>
-	</div>
+  	<div id="waypoints-tab" *ngSwitchCase="'waypoints-tab'">
+  	  <app-waypoints></app-waypoints>
+  	</div>
   </div>
 </div>

@@ -12,6 +12,8 @@ import { WaypointsComponent } from './components/waypoints/waypoints.component';
 import { SettingsComponent } from './components/settings/settings.component';
 
 import { RosService } from './services/ros.service';
+import { CameraComponent } from './components/camera/camera.component';
+import { DepthComponent } from './components/depth/depth.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { RosService } from './services/ros.service';
     MapComponent,
     StatusComponent,
     WaypointsComponent,
-    SettingsComponent
+    SettingsComponent,
+    CameraComponent,
+    DepthComponent
   ],
   imports: [
     BrowserModule,
