@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +30,7 @@ import { DepthComponent } from './components/depth/depth.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AngularFontAwesomeModule,
     AppRoutingModule
   ],

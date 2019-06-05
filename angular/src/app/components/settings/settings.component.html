@@ -15,8 +15,15 @@
   <h2 class="my-4">System Settings</h2>
   <form>
     <div class="form-group my-3">
-      <label for="bridgeIp">Default ROS Bridge IP</label>
-      <input type="text" class="form-control" id="bridgeIp" aria-describedby="ipHelp" placeholder="Enter IP">
+      <label for="bridgeIp">Default ROS Bridge Address</label>
+      <div class="form-group row">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Enter IP">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Enter Port">
+        </div>
+      </div>
       <small id="ipHelp" class="form-text text-muted">The default IP address to the robot's rosbridge server</small>
     </div>
     <div class="form-group my-3">

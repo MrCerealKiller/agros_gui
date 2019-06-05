@@ -4,16 +4,16 @@
     <img src="/assets/brandmark_name.png" height="40" width="160" class="d-inline-block align-top" alt="">
   </a>
 
-  <form class="navbar-form navbar-left form-inline mx-1" onsubmit="event.preventDefault();" style="padding-left:0px;padding-right:0px;">
+  <form class="navbar-form navbar-left form-inline mx-1" (submit)=connect() style="padding-left:0px;padding-right:0px;">
 	<div class="form-inline">
 	  <div class="input-group">
 	    <div class="input-group-prepend">
 	      <span class="input-group-text">IP</span>
-        </div>
-        <input type="text" class="form-control" id="ip-field" placeholder="ROS IP" value="10.10.10.10" style="width:140px;">
       </div>
+      <input type="text" class="form-control" id="ip-field" placeholder="localhost" value="localhost" style="width:140px;" [(ngModel)]="ip" name="ip">
+    </div>
 	</div>
-    <button type="submit" class="btn btn-dark mx-2" id="connect-btn" onclick="connect();">Connect</button>
+    <button type="submit" class="btn btn-dark mx-2" id="connect-btn">Connect</button>
   </form>
 
   <span id="notif-bar" class="mx-2">

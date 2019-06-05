@@ -7,18 +7,19 @@ import * as ROSLIB from 'roslib';
 })
 export class RosService {
   ros: ROSLIB.Ros = null;
-  url: string = "ws://localhost:9090";
+  ip: string = 'localhost';
+  port: string = '9090'
   private connectionSubject = new BehaviorSubject<boolean>(false);
   public connection$ = this.connectionSubject.asObservable();
 
   constructor() {
     console.log('ROS Service Instantiated. Attempting to connect...');
-    this.requestConnection(this.url);
+    this.requestConnection(this.ip);
   }
 
-  requestConnection(url) {
+  requestConnection(ip) {
     this.ros = new ROSLIB.Ros({
-      url: url
+      url: ('ws://' + ip + ':' + this.port)
     });
 
     this.ros.on('connection', function() {
@@ -35,6 +36,12 @@ export class RosService {
       console.log('The connection to the ROS network has been closed');
       this.connectionSubject.next(false);
     }.bind(this));
+  }
+
+  close() {
+    if (this.ros != null) {
+      this.ros.close();
+    }
   }
 
   getRos() {
