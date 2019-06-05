@@ -21,7 +21,7 @@
     </div>
     <div class="col-11">
       <div [ngSwitch]="viewMedia">
-        <div id="map-view" class="shadow rounded" *ngSwitchCase="'map-view'">
+        <div id="map-view" *ngSwitchCase="'map-view'">
           <app-map></app-map>
         </div>
 
