@@ -1,6 +1,6 @@
 <div id="waypoints-panel" class="row card-group w-auto mx-2 p-3">
 
-  <!-- Status -->
+  <!-- CSV Mode -->
   <div id="status" class="col card border-dark px-0 mx-0">
 	<div class="card-header">
 	  <p class="card-title title">CSV</p>
@@ -16,16 +16,19 @@
 	</div>
   </div>
 
-  <!-- Controls -->
-  <div id="controls" class="card text-center border-dark px-0 mx-0">
+  <!-- Choose YAML Mode -->
+  <div id="controls" class="card border-dark px-0 mx-0">
     <div class="card-header">
-	  <p class="card-title title">Drawing Tools</p>
+	  <p class="card-title title">Pre-made Config</p>
     </div>
     <div class="card-body">
-      <button type="button" class="btn btn-primary btn-block m-2">Draw Boundaries</button>
-      <button type="button" class="btn btn-primary btn-block m-2">Draw Work Area</button>
-      <button type="button" class="btn btn-primary btn-block m-2">Generate Pattern</button>
-      <button type="button" class="btn btn-primary btn-block m-2">Download as CSV</button>
+      <form>
+        <div class="form-group">
+          <label for="yamlInput">Choose Config File (yaml)</label>
+          <input type="file" class="form-control-file" id="yamlInput">
+        </div>
+        <button type="submit" class="btn btn-primary my-2">Load</button>
+      </form>
     </div>
   </div>
 

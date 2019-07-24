@@ -12,7 +12,8 @@ export const environment = {
   tarLatTopic: '/path/tarLat',
   tarLonTopic: '/path/tarLon',
   imgTopic: 'camera/color/image_raw/compressed',
-  depthTopic: 'camera/depth/image_rect_raw/compressed'
+  depthTopic: 'camera/depth/image_rect_raw/compressed',
+  routeTopic: 'path_generator/route_network'
 };
 
 /*

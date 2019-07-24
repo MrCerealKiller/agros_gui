@@ -10,6 +10,7 @@ import OlView from 'ol/View';
 
 import OlFeature from 'ol/Feature';
 import OlPoint from 'ol/geom/Point';
+import OlLineString from 'ol/geom/LineString';
 import OlIcon from 'ol/style/Icon';
 import {Circle, Fill, Stroke, Style} from 'ol/style';
 
@@ -31,22 +32,28 @@ import { RosService } from 'src/app/services/ros.service';
 export class MapComponent implements OnInit {
 
   // Tractor Marker Status
-  lat: number = 45.073313;
-  lon: number = -74.935338;
+  lat: number = 45.505337;
+  lon: number = -73.579901;
   heading: number = 0;
+
+  // Route
+  route: any;
 
   // ROS
   connection: Subscription;
   coordsSub: ROSLIB.Topic;
   headingSub: ROSLIB.Topic;
+  routeSub: ROSLIB.Topic;
 
   // Base Map
   map: OlMap;
   view: OlView;
 
   mapLayer: OlTileLayer;
-  features: OlVectorLayer;
+  routeLayer: OlVectorLayer;
+  tractorLayer: OlVectorLayer;
 
+  routeFeature: OlFeature;
   tractorFeature: OlFeature;
 
   constructor(private _ros: RosService) {
@@ -65,9 +72,21 @@ export class MapComponent implements OnInit {
       })
     }));
 
-    this.features = new OlVectorLayer({
+    this.tractorLayer = new OlVectorLayer({
       source: new OlVectorSource({
         features: [this.tractorFeature]
+      })
+    });
+
+    this.routeFeature = new OlFeature();
+
+    this.routeLayer = new OlVectorLayer({
+      source: new OlVectorSource({
+        features: [this.routeFeature]
+      }),
+      style: new Style({
+        fill: new Fill({ color: '#FF00FF', weight: 4 }),
+        stroke: new Stroke({ color: '#FF00FF', width: 2 })
       })
     });
 
@@ -87,7 +106,7 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.map = new OlMap({
       target: 'map',
-      layers: [this.mapLayer, this.features],
+      layers: [this.mapLayer, this.routeLayer, this.tractorLayer],
       view: this.view
     });
   }
@@ -115,6 +134,17 @@ export class MapComponent implements OnInit {
       this.heading = (message.data / 180.0) * 3.14159265359;
       this.updateMarker();
     }.bind(this));
+
+    // System Heading ----------------------------------------------------------
+    this.routeSub = new ROSLIB.Topic({
+      ros: this._ros.getRos(),
+      name: environment.routeTopic,
+      messageType: 'geographic_msgs/RouteNetwork'
+    });
+    this.routeSub.subscribe(function(message) {
+      this.route = message.points
+      this.updateRoute()
+    }.bind(this));
   }
 
   detach() {
@@ -131,6 +161,16 @@ export class MapComponent implements OnInit {
     if (!containsCoordinate(extent, loc)) {
       this.map.getView().animate({center: loc});
     }
+  }
+
+  updateRoute() {
+    var coords = [];
+    for (let p of this.route) {
+      var loc = fromLonLat([p.position.longitude, p.position.latitude]);
+      coords.push(loc)
+    }
+    var line = new OlLineString(coords)
+    this.routeFeature.setGeometry(line)
   }
 
   ngOnDestroy() {
