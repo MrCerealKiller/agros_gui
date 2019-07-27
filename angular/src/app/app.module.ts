@@ -15,6 +15,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { RosService } from './services/ros.service';
 import { CameraComponent } from './components/camera/camera.component';
 import { DepthComponent } from './components/depth/depth.component';
+import { VLightBarComponent } from './components/v-light-bar/v-light-bar.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DepthComponent } from './components/depth/depth.component';
     WaypointsComponent,
     SettingsComponent,
     CameraComponent,
-    DepthComponent
+    DepthComponent,
+    VLightBarComponent
   ],
   imports: [
     BrowserModule,

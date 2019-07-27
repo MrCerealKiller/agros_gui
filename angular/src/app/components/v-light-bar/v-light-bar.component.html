@@ -1,0 +1,15 @@
+<div class="container text-center justify-content-center w-100">
+  <div class="container p-4 my-5 bg-dark rounded">
+    <ul class="list-inline py-5">
+      <li *ngFor="let light of lights" class="list-inline-item">
+        <div class="circle bg-{{light.bg}}"></div>
+    </ul>
+    <div class="container">
+      <hr class="bg-light">
+      <h1 class="text-light">{{bearingAbs | number:'1.1-1'}}&deg; {{direction}}</h1>
+      <div *ngIf="isInRange; then inRange else outRange"></div>
+      <ng-template #inRange><h3 #inRange class="text-success">In Range</h3></ng-template>
+      <ng-template #outRange><h3 class="text-danger">Warning: Out of Range</h3></ng-template>
+    </div>
+  </div>
+</div>

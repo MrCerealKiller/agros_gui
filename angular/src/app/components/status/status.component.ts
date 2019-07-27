@@ -20,7 +20,7 @@ export class StatusComponent implements OnInit {
 
   // Target Status
   tarDistance: number = 0;
-  tarHeading: number = 0;
+  bearing: number = 0;
   tarLat: number = 0;
   tarLon: number = 0
 
@@ -30,7 +30,7 @@ export class StatusComponent implements OnInit {
   sysHeadingSub: ROSLIB.Topic;
   sysCoordsSub: ROSLIB.Topic;
   tarDistanceSub: ROSLIB.Topic;
-  tarHeadingSub: ROSLIB.Topic;
+  bearingSub: ROSLIB.Topic;
   tarLatSub: ROSLIB.Topic;
   tarLonSub: ROSLIB.Topic;
 
@@ -87,14 +87,14 @@ export class StatusComponent implements OnInit {
       this.tarDistance = message.data;
     }.bind(this));
 
-    // Target Heading ----------------------------------------------------------
-    this.tarHeadingSub = new ROSLIB.Topic({
+    // Target Bearing ----------------------------------------------------------
+    this.bearingSub = new ROSLIB.Topic({
       ros: this._ros.getRos(),
-      name: environment.tarHeadingTopic,
+      name: environment.bearingTopic,
       messageType: 'std_msgs/Float64'
     });
-    this.tarHeadingSub.subscribe(function(message) {
-      this.tarHeading = message.data;
+    this.bearingSub.subscribe(function(message) {
+      this.bearing = message.data;
     }.bind(this));
 
     // Target Latitude ---------------------------------------------------------

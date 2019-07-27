@@ -7,6 +7,11 @@
             <fa name="map-marker" size="lg"></fa>
           </a>
         </li>
+        <li class="nav-item pl-0 pr-2 my-2" rel="v-light-bar-view" (click)="viewMedia ='v-light-bar-view'">
+          <a class="nav-link text-dark p-1" [class.active]="viewMedia == 'v-light-bar-view'" href="#">
+            <fa name="arrows-h" size="lg"></fa>
+          </a>
+        </li>
         <li class="nav-item pl-0 pr-2 my-2" rel="camera-view" (click)="viewMedia ='camera-view'">
           <a class="nav-link text-dark p-1" [class.active]="viewMedia == 'camera-view'" href="#">
             <fa name="camera" size="lg"></fa>
@@ -23,6 +28,10 @@
       <div [ngSwitch]="viewMedia">
         <div id="map-view" *ngSwitchCase="'map-view'">
           <app-map></app-map>
+        </div>
+
+        <div id="v-light-bar-view" *ngSwitchCase="'v-light-bar-view'">
+          <app-v-light-bar></app-v-light-bar>
         </div>
 
         <div id="camera-view" *ngSwitchCase="'camera-view'">

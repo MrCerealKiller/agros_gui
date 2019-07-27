@@ -4,7 +4,7 @@ export const environment = {
   sysHeadingTopic: '/gps/heading',
   sysCoordsTopic: '/gps/fix',
   tarDistanceTopic: '/path/tarDist',
-  tarHeadingTopic: '/path/tarAngle',
+  bearingTopic: '/path/tarAngle',
   tarLatTopic: '/path/tarLat',
   tarLonTopic: '/path/tarLon',
   imgTopic: 'camera/color/image_raw/compressed',
