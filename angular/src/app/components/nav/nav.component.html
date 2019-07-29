@@ -22,18 +22,5 @@
     <fa name="battery" size="lg" class="mx-2"></fa>
   </span>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav nav navbar-right ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/']">Dashboard</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/settings']">Settings</a>
-      </li>
-    </ul>
-  </div>
+  <a class="nav-link text-dark" [routerLink]="['/settings']">Settings</a>
 </nav>

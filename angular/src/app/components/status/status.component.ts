@@ -63,7 +63,7 @@ export class StatusComponent implements OnInit {
       messageType: 'std_msgs/Float64'
     });
     this.sysHeadingSub.subscribe(function(message) {
-      this.sysHeading = message.data;
+      this.sysHeading = (message.data / Math.PI) * 180;
     }.bind(this));
 
     // System Coordinates ------------------------------------------------------
@@ -94,7 +94,7 @@ export class StatusComponent implements OnInit {
       messageType: 'std_msgs/Float64'
     });
     this.bearingSub.subscribe(function(message) {
-      this.bearing = message.data;
+      this.bearing = (message.data / Math.PI) * 180;
     }.bind(this));
 
     // Target Latitude ---------------------------------------------------------
