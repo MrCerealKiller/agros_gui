@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   sysSpeedTopic: '/gps/speed',
-  sysHeadingTopic: '/gps/heading',
+  sysHeadingTopic: '/decomposer/heading',
   sysCoordsTopic: '/gps/fix',
   tarDistanceTopic: '/agros_path_follower/goal_dist',
   bearingTopic: '/agros_path_follower/goal_angle',
@@ -13,7 +13,7 @@ export const environment = {
   tarLonTopic: '/path/tarLon',
   imgTopic: 'camera/color/image_raw/compressed',
   depthTopic: 'camera/depth/image_rect_raw/compressed',
-  routeTopic: 'agros_path_gen/route_network'
+  routeTopic: 'agros_path_generator/route_network'
 };
 
 /*
