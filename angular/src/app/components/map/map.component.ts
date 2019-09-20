@@ -138,7 +138,7 @@ export class MapComponent implements OnInit {
       messageType: 'std_msgs/Float64'
     });
     this.headingSub.subscribe(function(message) {
-      this.heading = (message.data / 180.0) * 3.14159265359;
+      this.heading = message.data
       this.updateMarker();
     }.bind(this));
 

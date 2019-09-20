@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   sysSpeedTopic: '/gps/speed',
-  sysHeadingTopic: '/gps/heading',
+  sysHeadingTopic: '/decomposer/heading',
   sysCoordsTopic: '/gps/fix',
   tarDistanceTopic: '/agros_path_follower/goal_dist',
   bearingTopic: '/agros_path_follower/goal_angle',
