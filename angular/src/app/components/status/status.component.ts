@@ -84,7 +84,7 @@ export class StatusComponent implements OnInit {
       messageType: 'std_msgs/Float64'
     });
     this.tarDistanceSub.subscribe(function(message) {
-      this.tarDistance = message.data;
+      this.tarDistance = (message.data / 1000);
     }.bind(this));
 
     // Target Bearing ----------------------------------------------------------
