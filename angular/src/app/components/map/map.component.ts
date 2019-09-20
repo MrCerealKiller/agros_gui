@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 // OpenLayers Imports
 import OlMap from 'ol/Map';
@@ -30,6 +30,8 @@ import { RosService } from 'src/app/services/ros.service';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
+
+  @Input() isFullscreen: boolean = false;
 
   // Tractor Marker Status
   lat: number = 45.505337;
@@ -109,6 +111,11 @@ export class MapComponent implements OnInit {
       layers: [this.mapLayer, this.routeLayer, this.tractorLayer],
       view: this.view
     });
+
+    let that = this;
+    setTimeout(function() {
+      that.map.updateSize();
+    }, 200);
   }
 
   listen() {
@@ -175,5 +182,13 @@ export class MapComponent implements OnInit {
 
   ngOnDestroy() {
     this.connection.unsubscribe();
+  }
+
+  setIsFullscreen(isFullscreen) {
+    this.isFullscreen = isFullscreen;
+    let that = this;
+    setTimeout(function() {
+      that.map.updateSize();
+    }, 200);
   }
 }

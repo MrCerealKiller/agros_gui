@@ -1,5 +1,5 @@
 <div id="top-panes">
-  <div class="row mw-100 justify-content-center">
+  <div id="tools" class="row mw-100 mh-100 justify-content-center bg-white" #tools>
     <div class="col-1 text-center p-0 pt-3">
       <ul class="nav-pills list-unstyled">
         <li class="nav-item pl-0 pr-2 my-2" rel="map-view" (click)="viewMedia ='map-view'">
@@ -22,12 +22,17 @@
             <fa name="cube" size="lg"></fa>
           </a>
         </li>
+        <li class="nav-item pl-0 pr-2 my-2" rel="depth-view" (click)="toggleFullscreen()">
+          <a class="nav-link text-dark p-1" href="#">
+            <fa name="expand" size="lg"></fa>
+          </a>
+        </li>
       </ul>
     </div>
-    <div class="col-11">
+    <div class="col-11 mh-50">
       <div [ngSwitch]="viewMedia">
         <div id="map-view" *ngSwitchCase="'map-view'">
-          <app-map></app-map>
+          <app-map #map [isFullscreen]="isToolsFs"></app-map>
         </div>
 
         <div id="v-light-bar-view" *ngSwitchCase="'v-light-bar-view'">
