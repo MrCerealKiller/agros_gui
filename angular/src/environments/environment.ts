@@ -13,7 +13,8 @@ export const environment = {
   tarLonTopic: '/path/tarLon',
   imgTopic: 'camera/color/image_raw/compressed',
   depthTopic: 'camera/depth/image_rect_raw/compressed',
-  routeTopic: 'agros_path_generator/route_network'
+  routeTopic: 'agros_path_generator/route_network',
+  loadService: 'agros_path_generator/generate_path'
 };
 
 /*

@@ -22,10 +22,10 @@
 	  <p class="card-title title">Pre-made Config</p>
     </div>
     <div class="card-body">
-      <form>
+      <form (submit)=callLoadService()>
         <div class="form-group">
           <label for="yamlInput">Choose Config File (yaml)</label>
-          <input type="file" class="form-control-file" id="yamlInput">
+          <input type="text" class="form-control" id="yamlInput" [(ngModel)]="yaml_path" name="yaml_path">
         </div>
         <button type="submit" class="btn btn-primary my-2">Load</button>
       </form>
